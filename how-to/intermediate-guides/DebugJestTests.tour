@@ -1,0 +1,54 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Debug Jest Tests",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "This guide will walk you through setting up VSCode for debugging LWC Jest tests using the built-in debugger tool."
+    },
+    {
+      "title": "Getting Started",
+      "description": "Before we begin, make sure you have set up your development environment using the [setup guide](https://sites.google.com/brightgen.com/technical-staff-room/developer-guide/workspace-setup)."
+    },
+    {
+      "title": "Create a launch.json file",
+      "description": "* Using the Command Palette (`cmd+shift+P`) search for \"Debug: Select and Start Debugging\".\n* Then choose \"Add Configuration...\"\n* For the environment, choose any option (this doesn't matter, we'll change it later)\n\nor [click here to get it done automatically](command:debug.addConfiguration)."
+    },
+    {
+      "file": ".vscode/launch.json",
+      "description": "This will generate a `launch.json` file in your project's `.vscode` directory with the default configuration for the environment you selected (if you run the command through the Command Pallette).\n\nYou should now add the below configuration to your `configurations` array:\n\n```json\n{\n    \"name\": \"Debug Jest Tests\",\n    \"type\": \"node\",\n    \"request\": \"launch\",\n    \"runtimeArgs\": [\n        \"--inspect-brk\",\n        \"${workspaceRoot}/node_modules/.bin/jest\",\n        \"--runInBand\"\n    ],\n    \"console\": \"integratedTerminal\",\n    \"internalConsoleOptions\": \"neverOpen\",\n    \"port\": 9229\n},\n```",
+      "line": 19,
+      "title": "Update your launch.json file",
+      "selection": {
+        "start": {
+          "line": 7,
+          "character": 9
+        },
+        "end": {
+          "line": 19,
+          "character": 11
+        }
+      },
+      "contents": "{\n    // Use IntelliSense to learn about possible attributes.\n    // Hover to view descriptions of existing attributes.\n    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387\n    \"version\": \"0.2.0\",\n    \"configurations\": [\n        {\n            \"name\": \"Debug Jest Tests\",\n            \"type\": \"node\",\n            \"request\": \"launch\",\n            \"runtimeArgs\": [\n                \"--inspect-brk\",\n                \"${workspaceRoot}/node_modules/.bin/jest\",\n                \"--runInBand\"\n            ],\n            \"console\": \"integratedTerminal\",\n            \"internalConsoleOptions\": \"neverOpen\",\n            \"port\": 9229\n        },\n        {\n            \"name\": \"Launch Apex Replay Debugger\",\n            \"type\": \"apex-replay\",\n            \"request\": \"launch\",\n            \"logFile\": \"${command:AskForLogFileName}\",\n            \"stopOnEntry\": true,\n            \"trace\": true\n        }\n    ]\n}"
+    },
+    {
+      "title": "Debugging Jest Tests",
+      "description": "Navigate to the [Debug view](command:workbench.view.debug) or by pressing the debug icon on the left side bar.\n\nIf you have configured your `launch.json` file correctly, you should be able to see a \"Debug Jest Tests\" option at the top of the Debug window.\n\n![debug view](https://github.com/nkadis/bg-code-tours/raw/main/images/debug-view.png)"
+    },
+    {
+      "file": "force-app/main/default/lwc/todoList/todoList.js",
+      "description": "You can add breakpoints to your files so that when the debugger runs it will stop at your breakpoint so you can inspect the code. You can do this by clicking on the left side of a line number inside your file.\n\n![add breakpoints](https://github.com/nkadis/bg-code-tours/raw/main/images/add-breakpoints.png)\n\nYou can view your breakpoints at the very bottom of the Debug menu under the [Breakpoints sub-menu](command:workbench.debug.action.focusBreakpointsView). You can turn a breakpoint off by unchecking it, or you can remove it completely by pressing the \"X\" in the breakpoints menu, or by clicking on the red breakpoint mark in your file.\n\n![breakpoints menu](https://github.com/nkadis/bg-code-tours/raw/main/images/breakpoints-menu.png)",
+      "line": 28,
+      "title": "Add Breakpoints",
+      "contents": "import { LightningElement, api } from \"lwc\";\n\nexport default class TodoList extends LightningElement\n{\n    // Spring 20 Note on tracked properties: this component may seem to\n    // mutate an array, but because Array.prototype.filter() always creates\n    // a new array, in fact no mutation occurs. Since we always assign\n    // a new array to filteredTodos, the track decorator is not required.\n    filteredTodos = [];\n\n    _todos = [];\n\n    priorityFilter = false;\n\n    @api\n    get todos()\n    {\n        return this._todos;\n    }\n    set todos(value)\n    {\n        this._todos = value;\n        this.filterTodos();\n    }\n\n    filterTodos()\n    {\n        if (this.priorityFilter && this.filteredTodos)\n        {\n            this.filteredTodos = this._todos.filter(todo => todo.priority === true);\n        }\n        else\n        {\n            this.filteredTodos = this._todos;\n        }\n    }\n\n    handleCheckboxChange(event)\n    {\n        this.priorityFilter = event.target.checked;\n        this.filterTodos();\n    }\n}\n"
+    },
+    {
+      "title": "Run the Debugger",
+      "description": "Now to run a Jest test in debug mode you can navigate to your test file and either\n\n* Click the green play icon next to the \"Debug Jest Tests\" option in the Debug window\n\n![play icon](https://github.com/nkadis/bg-code-tours/raw/main/images/debug-play-button.png)\n\n* Click on the \"Debug Test\" option at the top of the test you want to debug\n\n![test link](https://github.com/nkadis/bg-code-tours/raw/main/images/debug-start-test.png)\n\n* Use the command palette (`cmd+shift+P`), look for \"Debug: Select and Start Debugging\" and select the \"Debug Jest Tests\" option\n\n"
+    },
+    {
+      "title": "Start Debugging",
+      "description": "Once you've started the debugger, you'll notice that a small popup appears at the top of your window containing the tools for traversing through the stack.\n\nYou will also notice that the bottom bar has changed to orange and the Debug Console is now open. Once you hit a breakpoint, the test will pause and you can inspect the state and run commands in the console.\n\nYou can stop the debug session by pressing the red square found in the popup, or by waiting for the test to finish running (assuming no breakpoints are hit)."
+    }
+  ]
+}

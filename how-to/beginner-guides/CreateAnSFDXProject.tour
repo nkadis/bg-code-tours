@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Create an SFDX Project",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "The Salesforce Developer Experience (DX) is a set of tools that introduces a new project structure for your org’s metadata (code and configuration), your org templates, your sample data, and all your team’s tests. This project can be tracked through a version control system (VCS) to bring consistency to your team’s development processes and collaboration.\n\nA Salesforce DX project has a specific structure and a configuration file that identifies the directory as a Salesforce DX project. In this tour, we will guide you through the steps for creating a new SFDX Project"
+    },
+    {
+      "title": "Step 1",
+      "description": "[Open a Terminal window](command:workbench.action.terminal.focusTabs)"
+    },
+    {
+      "title": "Step 2",
+      "description": "Navigate to the location you want your new Salesforce DX project to be created."
+    },
+    {
+      "title": "Step 3",
+      "description": "Step 3: Run the command for creating a new Salesforce DX project:\n\n`sfdx force:project:create -n <MyProject> --manifest`\n\nwhere:\n\n* `-n` is the name of the generated project and what the new project's directory will be named - replace `<MyProject>` with the project name you want to use\n\n* `--manifest` generates a default manifest (`package.xml`) for change-set based development"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Push a new SFDX Project to version control",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "A Version Control System (VCS) is responsible for tracking and managing changes to your code. VCS allow teams to work faster and smarter by giving them the necessary tools to get work done concurrently on the same codebase. A Salesforce Developer Experience (SFDX) project is a structured set of your custom configurations (metadata) that form what is your project. This project is the same as any other and can be pushed to a VCS.\n\n**IMPORTANT**: If you have not already gone through the [Workspace Setup Guide](https://sites.google.com/brightgen.com/technical-staff-room/developer-guide/workspace-setup), please do that before proceeding.\n"
+    },
+    {
+      "title": "Creating an SFDX Project",
+      "description": "Follow the How-To guide on [creating an SFDX Project](https://sites.google.com/brightgen.com/technical-staff-room/developer-guide/how-tos/create-an-sfdx-project)."
+    },
+    {
+      "title": "Step 1",
+      "description": "[Open a new Terminal window](command:workbench.action.terminal.focusTabs)"
+    },
+    {
+      "title": "Step 2",
+      "description": "Navigate to your newly created SFDX Project directory."
+    },
+    {
+      "title": "Step 3",
+      "description": "Initialise the repository using:\n\n>> git init"
+    },
+    {
+      "title": "Step 4",
+      "description": "Add the remote for your Git repository by running:\n\n`git remote add origin <your_repository_url>`\n\nTip: You can find the URL on your repository's home page. Below are examples of where to find them for GitHub and Beanstalk. \n\n#### GitHub\n![GitHub](https://github.com/nkadis/bg-code-tours/raw/main/images/git-url-github.png)\n\n#### Beanstalk\n![Beanstalk](https://github.com/nkadis/bg-code-tours/raw/main/images/git-url-beanstalk.png)"
+    },
+    {
+      "title": "Step 5",
+      "description": "Set your default branch to `main` (for GitHub only) or `master` by running:\n\n>> git branch -M main\n\n**IMPORTANT: PLEASE, DO NOT NAME THIS BRANCH ANYTHING OTHER THAN `main` OR `master`!**\n\nThe default branch is what gets cloned when developers clone a repository. Whatever modifications developers make will eventually end up in this default branch. The `master` branch in Git is not a special branch. It is exactly like any other branch. The only reason nearly every repository has a default branch names `master` is that the `git init` command creates it by default and most people don’t bother to change it. GitHub has switched to using `main` as the default branch (find out why [here](https://sfconservancy.org/news/2020/jun/23/gitbranchname/))."
+    },
+    {
+      "title": "Step 6",
+      "description": "Now add all the unstaged code from your new project by running:\n\n>> git add ."
+    },
+    {
+      "title": "Step 7",
+      "description": "Commit your changes using:\n\n`git commit -m \"A descriptive commit message of the changes\"`"
+    },
+    {
+      "title": "Step 8",
+      "description": "Finally push your committed changes to the repository by running:\n\n>> git push -u origin main\n\n**Note 1**: If this is your first time sending something to the current account, you will need to authenticate before the push can go through. If you are running the command through the VSCode integrated terminal and provided a GitHub repository URL, a new window will appear for you to log in and authorise GitHub for VSCode to manage your repositories.\n\n**Note 2**: If you are using multiple Git accounts, e.g. Github (personal) and Beanstalk (work), you might want to specify the email address to use for the current repository. To do so, navigate to the project's directory and run:\n\n`git config user.email your_email@example.com`"
+    }
+  ]
+}
