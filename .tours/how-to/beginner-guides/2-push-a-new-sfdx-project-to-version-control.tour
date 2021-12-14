@@ -24,7 +24,7 @@
     },
     {
       "title": "Step 4",
-      "description": "Add the remote for your Git repository by running:\n\n`git remote add origin <your_repository_url>`\n\nTip: You can find the URL on your repository's home page. Below are examples of where to find them for GitHub and Beanstalk. \n\n#### GitHub\n![GitHub](https://github.com/nkadis/bg-code-tours/raw/main/images/git-url-github.png)\n\n#### Beanstalk\n![Beanstalk](https://github.com/nkadis/bg-code-tours/raw/main/images/git-url-beanstalk.png)"
+      "description": "Add the remote for your Git repository by running:\n\n`git remote add origin <your_repository_url>`\n\nTip: You can find the URL on your repository's home page. Below are examples of where to find them for GitHub and Beanstalk. \n\n#### GitHub\n![GitHub](https://github.com/nkadis/bg-code-tours/raw/main/.tours/images/git-url-github.png)\n\n#### Beanstalk\n![Beanstalk](https://github.com/nkadis/bg-code-tours/raw/main/.tours/images/git-url-beanstalk.png)"
     },
     {
       "title": "Step 5",

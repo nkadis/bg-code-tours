@@ -32,17 +32,17 @@
     },
     {
       "title": "Debugging Jest Tests",
-      "description": "Navigate to the [Debug view](command:workbench.view.debug) or by pressing the debug icon on the left side bar.\n\nIf you have configured your `launch.json` file correctly, you should be able to see a \"Debug Jest Tests\" option at the top of the Debug window.\n\n![debug view](https://github.com/nkadis/bg-code-tours/raw/main/images/debug-view.png)"
+      "description": "Navigate to the [Debug view](command:workbench.view.debug) or by pressing the debug icon on the left side bar.\n\nIf you have configured your `launch.json` file correctly, you should be able to see a \"Debug Jest Tests\" option at the top of the Debug window.\n\n![debug view](https://github.com/nkadis/bg-code-tours/raw/main/.tours/images/debug-view.png)"
     },
     {
       "file": "force-app/main/default/lwc/todoList/todoList.js",
-      "description": "You can add breakpoints to your files so that when the debugger runs it will stop at your breakpoint so you can inspect the code. You can do this by clicking on the left side of a line number inside your file.\n\n![add breakpoints](https://github.com/nkadis/bg-code-tours/raw/main/images/add-breakpoints.png)\n\nYou can view your breakpoints at the very bottom of the Debug menu under the [Breakpoints sub-menu](command:workbench.debug.action.focusBreakpointsView). You can turn a breakpoint off by unchecking it, or you can remove it completely by pressing the \"X\" in the breakpoints menu, or by clicking on the red breakpoint mark in your file.\n\n![breakpoints menu](https://github.com/nkadis/bg-code-tours/raw/main/images/breakpoints-menu.png)",
+      "description": "You can add breakpoints to your files so that when the debugger runs it will stop at your breakpoint so you can inspect the code. You can do this by clicking on the left side of a line number inside your file.\n\n![add breakpoints](https://github.com/nkadis/bg-code-tours/raw/main/.tours/images/add-breakpoints.png)\n\nYou can view your breakpoints at the very bottom of the Debug menu under the [Breakpoints sub-menu](command:workbench.debug.action.focusBreakpointsView). You can turn a breakpoint off by unchecking it, or you can remove it completely by pressing the \"X\" in the breakpoints menu, or by clicking on the red breakpoint mark in your file.\n\n![breakpoints menu](https://github.com/nkadis/bg-code-tours/raw/main/.tours/images/breakpoints-menu.png)",
       "line": 28,
       "title": "Add Breakpoints"
     },
     {
       "title": "Run the Debugger",
-      "description": "Now to run a Jest test in debug mode you can navigate to your test file and either\n\n* Click the green play icon next to the \"Debug Jest Tests\" option in the Debug window\n\n![play icon](https://github.com/nkadis/bg-code-tours/raw/main/images/debug-play-button.png)\n\n* Click on the \"Debug Test\" option at the top of the test you want to debug\n\n![test link](https://github.com/nkadis/bg-code-tours/raw/main/images/debug-start-test.png)\n\n* Use the command palette (`cmd+shift+P`), look for \"Debug: Select and Start Debugging\" and select the \"Debug Jest Tests\" option\n\n"
+      "description": "Now to run a Jest test in debug mode you can navigate to your test file and either\n\n* Click the green play icon next to the \"Debug Jest Tests\" option in the Debug window\n\n![play icon](https://github.com/nkadis/bg-code-tours/raw/main/.tours/images/debug-play-button.png)\n\n* Click on the \"Debug Test\" option at the top of the test you want to debug\n\n![test link](https://github.com/nkadis/bg-code-tours/raw/main/.tours/images/debug-start-test.png)\n\n* Use the command palette (`cmd+shift+P`), look for \"Debug: Select and Start Debugging\" and select the \"Debug Jest Tests\" option\n\n"
     },
     {
       "title": "Start Debugging",
