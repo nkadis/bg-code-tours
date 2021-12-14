@@ -1,0 +1,18 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+
+echo "\r\n> Running Javascript Linter"
+npx eslint --no-error-on-unmatched-pattern --fix **/{lwc,aura}/**/**.js
+echo "\r\n> Running Apex Code Formatter"
+find force-app/main/default/classes/ -type f -maxdepth 0 -exec uncrustify -c uncrustify.cfg --no-backup -l java force-app/main/default/classes/**.cls \;
+find force-app/main/default/classes/ -type d -maxdepth 0 -empty -exec echo "No Apex Classes to format" \;
+echo "\r\n> Running Jest Tests"
+npm run test
+echo "\r\n> Pushing to Scratch Org"
+sfdx force:source:push
+echo "\r\n> Running Apex Tests"
+find force-app/main/default/classes/ -type f -maxdepth 0 -exec sfdx force:apex:test:run -l RunLocalTests -r human \;
+find force-app/main/default/classes/ -type d -maxdepth 0 -empty -exec echo "No Local Apex Tests to run" \;
+echo "\r\n> Running Static Code Analysis Tool"
+sfdx scanner:run --target "./**/*.cls" -c "IP Team, IP Best Practices, Design, Error Prone, Performance, Code Style, IP Security" --severity-threshold 3
