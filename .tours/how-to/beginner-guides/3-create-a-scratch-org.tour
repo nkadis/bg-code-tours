@@ -24,8 +24,7 @@
           "character": 51
         }
       },
-      "title": "Step 2",
-      "contents": "{\n  \"orgName\": \"nicolaskadis company\",\n  \"edition\": \"Developer\",\n  \"features\": [\"EnableSetPasswordInApi\"],\n  \"adminEmail\": \"yourPersonalEmail@brightgen.com\",\n  \"settings\": {\n    \"lightningExperienceSettings\": {\n      \"enableS1DesktopEnabled\": true\n    },\n    \"mobileSettings\": {\n      \"enableS1EncryptedStoragePref2\": false\n    }\n  }\n}\n"
+      "title": "Step 2"
     },
     {
       "title": "Step 3",

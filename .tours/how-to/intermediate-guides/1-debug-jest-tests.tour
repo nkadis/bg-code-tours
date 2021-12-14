@@ -28,8 +28,7 @@
           "line": 19,
           "character": 11
         }
-      },
-      "contents": "{\n    // Use IntelliSense to learn about possible attributes.\n    // Hover to view descriptions of existing attributes.\n    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387\n    \"version\": \"0.2.0\",\n    \"configurations\": [\n        {\n            \"name\": \"Debug Jest Tests\",\n            \"type\": \"node\",\n            \"request\": \"launch\",\n            \"runtimeArgs\": [\n                \"--inspect-brk\",\n                \"${workspaceRoot}/node_modules/.bin/jest\",\n                \"--runInBand\"\n            ],\n            \"console\": \"integratedTerminal\",\n            \"internalConsoleOptions\": \"neverOpen\",\n            \"port\": 9229\n        },\n        {\n            \"name\": \"Launch Apex Replay Debugger\",\n            \"type\": \"apex-replay\",\n            \"request\": \"launch\",\n            \"logFile\": \"${command:AskForLogFileName}\",\n            \"stopOnEntry\": true,\n            \"trace\": true\n        }\n    ]\n}"
+      }
     },
     {
       "title": "Debugging Jest Tests",
@@ -39,8 +38,7 @@
       "file": "force-app/main/default/lwc/todoList/todoList.js",
       "description": "You can add breakpoints to your files so that when the debugger runs it will stop at your breakpoint so you can inspect the code. You can do this by clicking on the left side of a line number inside your file.\n\n![add breakpoints](https://github.com/nkadis/bg-code-tours/raw/main/images/add-breakpoints.png)\n\nYou can view your breakpoints at the very bottom of the Debug menu under the [Breakpoints sub-menu](command:workbench.debug.action.focusBreakpointsView). You can turn a breakpoint off by unchecking it, or you can remove it completely by pressing the \"X\" in the breakpoints menu, or by clicking on the red breakpoint mark in your file.\n\n![breakpoints menu](https://github.com/nkadis/bg-code-tours/raw/main/images/breakpoints-menu.png)",
       "line": 28,
-      "title": "Add Breakpoints",
-      "contents": "import { LightningElement, api } from \"lwc\";\n\nexport default class TodoList extends LightningElement\n{\n    // Spring 20 Note on tracked properties: this component may seem to\n    // mutate an array, but because Array.prototype.filter() always creates\n    // a new array, in fact no mutation occurs. Since we always assign\n    // a new array to filteredTodos, the track decorator is not required.\n    filteredTodos = [];\n\n    _todos = [];\n\n    priorityFilter = false;\n\n    @api\n    get todos()\n    {\n        return this._todos;\n    }\n    set todos(value)\n    {\n        this._todos = value;\n        this.filterTodos();\n    }\n\n    filterTodos()\n    {\n        if (this.priorityFilter && this.filteredTodos)\n        {\n            this.filteredTodos = this._todos.filter(todo => todo.priority === true);\n        }\n        else\n        {\n            this.filteredTodos = this._todos;\n        }\n    }\n\n    handleCheckboxChange(event)\n    {\n        this.priorityFilter = event.target.checked;\n        this.filterTodos();\n    }\n}\n"
+      "title": "Add Breakpoints"
     },
     {
       "title": "Run the Debugger",
