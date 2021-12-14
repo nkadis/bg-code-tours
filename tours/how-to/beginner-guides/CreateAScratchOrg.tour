@@ -8,7 +8,7 @@
     },
     {
       "title": "Step 1",
-      "description": "[Open a terminal window](command:workbench.action.terminal.focusTabs) and navigate to the SFDX project you wish to create a scratch org for."
+      "description": "[Open a terminal window](command:workbench.action.terminal.new) and navigate to the SFDX project you wish to create a scratch org for."
     },
     {
       "file": "config/project-scratch-def.json",
@@ -29,7 +29,7 @@
     },
     {
       "title": "Step 3",
-      "description": "Create a new scratch org by simply running the following command in a [terminal window](command:workbench.action.terminal.focusTabs)\n\n`sfdx force:org:create -f config/project-scratch-def.json -a MyScratchOrgAlias --setdefaultusername`\n\nwhere:\n\n* `-f` specifies the location of the definition file for the creation of the org. This file includes the Edition and features to be enabled on creation along with other customisations\n\n * `-a` is the alias to be assigned for the created org\n\n* `--setdefaultusername` sets the newly created org as the default for this project so that you don't have to specify it with every command you run\n\n**Tip**: You can provide a `--durationdays <numberOfDays>` to the command to specify how long you want the org to last. The default value is 7 days and the maximum is 30.\n\nAfter the command is finished, you should see a message that the org was successfully created."
+      "description": "Create a new scratch org by simply running the following command in a [terminal window](command:workbench.action.terminal.new)\n\n`sfdx force:org:create -f config/project-scratch-def.json -a MyScratchOrgAlias --setdefaultusername`\n\nwhere:\n\n* `-f` specifies the location of the definition file for the creation of the org. This file includes the Edition and features to be enabled on creation along with other customisations\n\n * `-a` is the alias to be assigned for the created org\n\n* `--setdefaultusername` sets the newly created org as the default for this project so that you don't have to specify it with every command you run\n\n**Tip**: You can provide a `--durationdays <numberOfDays>` to the command to specify how long you want the org to last. The default value is 7 days and the maximum is 30.\n\nAfter the command is finished, you should see a message that the org was successfully created."
     },
     {
       "title": "Open your new Scratch Org",

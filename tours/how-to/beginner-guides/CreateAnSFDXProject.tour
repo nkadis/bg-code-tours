@@ -8,7 +8,7 @@
     },
     {
       "title": "Step 1",
-      "description": "[Open a Terminal window](command:workbench.action.terminal.focusTabs)"
+      "description": "[Open a Terminal window](command:workbench.action.terminal.new)"
     },
     {
       "title": "Step 2",
