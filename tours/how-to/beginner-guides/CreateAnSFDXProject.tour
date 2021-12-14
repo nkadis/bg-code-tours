@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "Create an SFDX Project",
+  "title": "Beginner Guides - Create an SFDX Project",
   "steps": [
     {
       "title": "Introduction",
@@ -18,5 +18,6 @@
       "title": "Step 3",
       "description": "Step 3: Run the command for creating a new Salesforce DX project:\n\n`sfdx force:project:create -n <MyProject> --manifest`\n\nwhere:\n\n* `-n` is the name of the generated project and what the new project's directory will be named - replace `<MyProject>` with the project name you want to use\n\n* `--manifest` generates a default manifest (`package.xml`) for change-set based development"
     }
-  ]
+  ],
+  "nextTour": "Beginner Guides - Push a new SFDX Project to Version Control"
 }

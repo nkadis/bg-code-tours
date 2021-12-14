@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "Debug Jest Tests",
+  "title": "Intermediate Guides - Debug Jest Tests",
   "steps": [
     {
       "title": "Introduction",

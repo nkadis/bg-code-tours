@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "Push a new SFDX Project to version control",
+  "title": "Beginner Guides - Push a new SFDX Project to Version Control",
   "steps": [
     {
       "title": "Introduction",
@@ -42,5 +42,6 @@
       "title": "Step 8",
       "description": "Finally push your committed changes to the repository by running:\n\n>> git push -u origin main\n\n**Note 1**: If this is your first time sending something to the current account, you will need to authenticate before the push can go through. If you are running the command through the VSCode integrated terminal and provided a GitHub repository URL, a new window will appear for you to log in and authorise GitHub for VSCode to manage your repositories.\n\n**Note 2**: If you are using multiple Git accounts, e.g. Github (personal) and Beanstalk (work), you might want to specify the email address to use for the current repository. To do so, navigate to the project's directory and run:\n\n`git config user.email your_email@example.com`"
     }
-  ]
+  ],
+  "nextTour": "Beginner Guides - Create a Scratch Org"
 }
