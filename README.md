@@ -24,5 +24,5 @@ You can either:
 ### Loading Tours using a URL
 1. Navigate to the tour you want to load from this repository (in the `.tours` folder).
 2. Click on the "Raw" link at the top of the file.
-   <img width="1236" alt="Screenshot 2021-12-13 at 16 55 22" src="https://user-images.githubusercontent.com/12812036/145855122-699875f9-5d09-4f78-9569-0fb697bd5a6b.png">
-4. Copy the URL and provide it in the VS Code **"CodeTour: Open Tour URL..."** command.
+   <img width="1233" alt="Screenshot 2021-12-14 at 17 27 06" src="https://user-images.githubusercontent.com/12812036/146049050-accaee85-b037-4c3a-ac6b-54be7606601a.png">
+3. Copy the URL and provide it in the VS Code **"CodeTour: Open Tour URL..."** command.
