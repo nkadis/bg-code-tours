@@ -1,5 +1,5 @@
 # BG Code Tours
-A collection of tours you can use with the [VSCode CodeTour plugin](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) to guide you through different aspects of a project's lifecycle, your workspace setup and programming fundamentals.
+A collection of tours you can use with the [VSCode CodeTour plugin](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) to guide you through different aspects of a project's lifecycle, your workspace setup, guides and programming fundamentals.
 
 ## How to use this repository
 You can either:
