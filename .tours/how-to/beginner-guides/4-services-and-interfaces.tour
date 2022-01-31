@@ -1,0 +1,112 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Beginner Guides - Services & Interfaces",
+  "steps": [
+    {
+      "title": "Interfaces",
+      "description": "# Interfaces\n\nInterfaces are classes that define a set of methods that have no implementation. To use an interface, other classes must implement it by providing a body for all the defined methods. \nProgramming against interfaces offers a plethora of benefits including:\ndecoupling the various subsystems of a solution from each other, allowing us to replace the underlying implementation without having to update every piece of code that uses the subsystem\nthe development of a new version of an implementation can be completed and tested without removing the original version\nno-op (No operation) implementations can be used for testing"
+    },
+    {
+      "title": "Services",
+      "description": "# Services\nThere is no hard definition as to what a Service class is, but typically, a service class encapsulates business logic and persistence away from the action being taken and does all the \"heavy lifting\". Service classes, however, don't carry out any actions directly, they delegate them to other parts of the system like Accessors or Utility classes."
+    },
+    {
+      "title": "Implementation Example",
+      "description": "# Implementation Example\nIn this example, we will be creating an interface for various Order Fulfilment processes. When an Order is placed, a lot of things need to happen behind the scenes that vary from company to company, like sending out a confirmation email or shipment tracking information or even sending data to other external (aka third-party) systems. We use interfaces to help us easily adapt our code to meet customers' requirements without having to make too many changes."
+    },
+    {
+      "file": "force-app/main/default/classes/OrderFulfilment_IF.cls",
+      "description": "## Defining the Interface\nHere, we create an interface with a single method to hook into the order booking process and allow different operations to take place when an order has been placed. This method will be implemented for all our customers based on their specific processes.",
+      "line": 1
+    },
+    {
+      "file": "force-app/main/default/classes/StandardOrderFulfilmentService.cls",
+      "description": "## Implementing the Interface\nWe have a standard version of the implementation of the interface that should cover most of our customers' needs. The operations carried out by this service class use Salesforce for order fulfilment. It implements the `handleOrderFulfilments` interface method and inside that, we would have code that sorts out all orders based on their state in the ordering process and carry out some actions accordingly. For example, we could send out confirmation emails when an Order's Status changes to Processing, or shipment tracking information when it changed to Shipped. This can be further customised to meet the customer's requirements.",
+      "line": 1
+    },
+    {
+      "file": "force-app/main/default/classes/CustomerSpecificOrderFulfilmentService.cls",
+      "description": "Some customers might not carry out any order fulfilment processes directly within Salesforce so we could have a different implementation of the interface that uses the `handleOrderFulfilments` method to format and send the order data to a third-party system. This can be further customised to meet the customer's requirements.",
+      "line": 1,
+      "title": "Customer Implementations"
+    },
+    {
+      "file": "force-app/main/default/triggers/OrderUpdated_Order_au.trigger",
+      "description": "## Writing code to avoid changes in multiple areas\nIn order to make our developers' lives easier we instantiate a variable in our trigger of type `OrderFulfilment_IF`, so whatever is returned by `OrderUtils.getOrderFulfilmentService()` should be of that type (i.e. should implement that interface). What this means is that our trigger doesn't need to know which class is implementing the interface and nor does it have to - it can just assume that something of that type will be returned. This way if the implementing interface class changes, the code in the trigger will not have to change.",
+      "line": 1
+    },
+    {
+      "file": "force-app/main/default/classes/OrderUtils.cls",
+      "description": "## Using Custom Settings/CMDTs for configuration\nIn order to make interfaces configurable, we usually surface a Custom Setting or Custom Metadata Type (recommended) that defines the name of the implementing class.",
+      "line": 1
+    },
+    {
+      "file": "force-app/main/default/classes/OrderUtils.cls",
+      "description": "In this example, we have a `Order_Setting__mdt` Custom Metadata Type with the name \"Default\", and on that object, we use the `Fulfilment_Service_Class_Name__c` field to retrieve the name of the class to instantiate.",
+      "line": 10,
+      "selection": {
+        "start": {
+          "line": 10,
+          "character": 47
+        },
+        "end": {
+          "line": 10,
+          "character": 128
+        }
+      },
+      "title": "Retrieving the Configured Class Name"
+    },
+    {
+      "file": "force-app/main/default/classes/OrderUtils.cls",
+      "description": "To instantiate a class from a string first use the built-in [Type.forName](https://www.google.com/url?q=https%3A%2F%2Fdeveloper.salesforce.com%2Fdocs%2Fatlas.en-us.apexref.meta%2Fapexref%2Fapex_methods_system_type.htm%23apex_System_Type_forName&sa=D) method to retrieve the Type",
+      "line": 14,
+      "selection": {
+        "start": {
+          "line": 14,
+          "character": 17
+        },
+        "end": {
+          "line": 14,
+          "character": 60
+        }
+      },
+      "title": "Instantiating a Type for the retrieved Class Name"
+    },
+    {
+      "file": "force-app/main/default/classes/OrderUtils.cls",
+      "description": "Then we call the `newInstance` method on the returned `Type` to return an `Object` that can then be casted into our interface object (in this case `OrderFulfilment_IF`)",
+      "line": 17,
+      "selection": {
+        "start": {
+          "line": 17,
+          "character": 21
+        },
+        "end": {
+          "line": 17,
+          "character": 93
+        }
+      },
+      "title": "Creating a new Instance of the Class"
+    },
+    {
+      "file": "force-app/main/default/classes/OrderUtils.cls",
+      "description": "## Why store an instantiated service in a variable?\nYou might have noticed that the `getOrderFulfilmentService` method stores the instantiated service in this variable (`orderFulfilmentService`).\nThis is done for a couple of reasons:\n- We can cache the retrieved service so that we don't initialise it multiple times if this method gets called multiple times during a single transaction.\n- We can manually set this variable in test methods to carry out tests for all the different types of implementations of the interface.",
+      "line": 4,
+      "selection": {
+        "start": {
+          "line": 4,
+          "character": 39
+        },
+        "end": {
+          "line": 4,
+          "character": 61
+        }
+      }
+    },
+    {
+      "file": "force-app/main/default/classes/NoopOrderFulfilmentService.cls",
+      "description": "## No-op Implementations\nNo-op (no operation) implementations are simply classes that implement an interface without doing anything.\n\nThey are useful for a number of reasons, mainly:\n- We can use them to disable parts of our system without having to carry out checks throughout our codebase to see if the service should be used - we can just call the service and if it's configured to use the no-op implementation it won't do anything but everything else will still work\n- If we are using a setting to configure which implementation to use, if no configuration is provided, we can default to the no-op version until the setting is configured\n- When testing a class, if the method being tested will not require any specific changes from an interface, we can use the no-op version so that we don't have to setup additional data for our test case if it is not needed. In tests, we can use the `@TestVisible` annotation to initialise our service directly (i.e. `OrderUtils.orderFulfilmentService = new NoopOrderFulfilmentService()`)",
+      "line": 1
+    }
+  ]
+}

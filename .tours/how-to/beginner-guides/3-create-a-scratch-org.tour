@@ -34,5 +34,6 @@
       "title": "Open your new Scratch Org",
       "description": "You can now open the scratch org by running:\n\n`sfdx force:org:open -u MyScratchOrgAlias`\n\nIf you have set the org as the default scratch org for this project you can omit the `-u` argument."
     }
-  ]
+  ],
+    "nextTour": "Beginner Guides - Services & Interfaces"
 }
