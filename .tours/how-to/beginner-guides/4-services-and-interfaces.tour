@@ -8,7 +8,7 @@
     },
     {
       "title": "Services",
-      "description": "# Services\nThere is no hard definition as to what a Service class is, but typically, a service class encapsulates business logic and persistence away from the action being taken and does all the \"heavy lifting\". Service classes, however, don't carry out any actions directly, they delegate them to other parts of the system like Accessors or Utility classes."
+      "description": "# Services\nThere is no hard definition as to what a Service class is, but typically, a service class encapsulates business logic and persistence away from the action being taken and does all the \"heavy lifting\" of processing the data passed to it. Service classes, however, don't interact with the database directly, Accessor classes do. "
     },
     {
       "title": "Implementation Example",
@@ -32,7 +32,7 @@
     },
     {
       "file": "force-app/main/default/triggers/OrderUpdated_Order_au.trigger",
-      "description": "## Writing code to avoid changes in multiple areas\nIn order to make our developers' lives easier we instantiate a variable in our trigger of type `OrderFulfilment_IF`, so whatever is returned by `OrderUtils.getOrderFulfilmentService()` should be of that type (i.e. should implement that interface). What this means is that our trigger doesn't need to know which class is implementing the interface and nor does it have to - it can just assume that something of that type will be returned. This way if the implementing interface class changes, the code in the trigger will not have to change.",
+      "description": "## Writing code to avoid changes in multiple areas\nWe want to be able to hook into the fulfilment process once an Order has been updated and to do this we can make use of triggers. Once an Order's Status changes, the OrderUpdated_Order_au trigger will be executed by the platform and delegate the fulfilment process to our service to handle. By handing over operations to our service classes we can keep triggers clean and decouple our implementations.\n\nIn order to make our developers' lives easier we instantiate a variable in our trigger of type `OrderFulfilment_IF`, so whatever is returned by `OrderUtils.getOrderFulfilmentService()` should be of that type (i.e. should implement that interface). What this means is that our trigger doesn't need to know which class is implementing the interface and nor does it have to - it can just assume that something of that type will be returned. This way if the implementing interface class changes, the code in the trigger will not have to change.",
       "line": 1
     },
     {
@@ -90,8 +90,8 @@
     },
     {
       "file": "force-app/main/default/classes/OrderUtils.cls",
-      "description": "## Why store an instantiated service in a variable?\nYou might have noticed that the `getOrderFulfilmentService` method stores the instantiated service in this variable (`orderFulfilmentService`).\nThis is done for a couple of reasons:\n- We can cache the retrieved service so that we don't initialise it multiple times if this method gets called multiple times during a single transaction.\n- We can manually set this variable in test methods to carry out tests for all the different types of implementations of the interface.",
-      "line": 4,
+      "description": "## Why store an instantiated service in a variable?\nYou might have noticed that the `getOrderFulfilmentService` method stores the instantiated service in this variable (`orderFulfilmentService`).\nThis is done for a couple of reasons:\n- We can cache the retrieved service so that we don't initialise it multiple times if this method gets called multiple times during a single transaction.\n- We can manually set this variable in test methods to carry out tests for all the different types of implementations of the interface by annotating it with @TestVisible.",
+      "line": 5,
       "selection": {
         "start": {
           "line": 4,

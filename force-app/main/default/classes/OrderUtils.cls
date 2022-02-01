@@ -1,6 +1,7 @@
 public with sharing class OrderUtils
 {
 
+    @TestVisible
     private static OrderFulfilment_IF orderFulfilmentService;
 
     public static OrderFulfilment_IF getOrderFulfilmentService()
